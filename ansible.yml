@@ -1,0 +1,13 @@
+---
+# same config file
+- hosts: all
+  become : yes
+  tasks:
+          # create a new file on each host
+          - copy:
+                  content: "Acquire::ForceIPv4 true;"
+                  dest: "/etc/apt/apt.conf.d/1000-force-ipv4-transport"
+                  backup: yes
+                  owner: root
+                  group: root
+                  mode: 0644
